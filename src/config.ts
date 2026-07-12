@@ -12,7 +12,7 @@ export function loadConfig(path?: string): { config: TestkitConfig; path: string
   const candidate = path ?? DEFAULT_CONFIG_FILES.find((f) => existsSync(f));
   if (!candidate || !existsSync(candidate)) {
     throw new Error(
-      `Config file not found. Create one with \`mcp-testkit init\` or pass --config <file>.`,
+      `Config file not found. Create one with \`mcp-testbench init\` or pass --config <file>.`,
     );
   }
   const raw = readFileSync(candidate, "utf8");
@@ -40,8 +40,8 @@ export function validateConfig(config: TestkitConfig, source: string): void {
   }
 }
 
-export const INIT_TEMPLATE = `# mcp-testkit configuration
-# Docs: https://github.com/kero168/mcp-testkit
+export const INIT_TEMPLATE = `# mcp-testbench configuration
+# Docs: https://github.com/kero168/mcp-testbench
 server:
   # Command that starts your MCP server over stdio:
   command: "node dist/index.js"

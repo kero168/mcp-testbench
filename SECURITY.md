@@ -16,6 +16,6 @@ requested.
 
 ## Scope notes
 
-`mcp-testkit` spawns the server process you configure and connects to it as
+`mcp-testbench` spawns the server process you configure and connects to it as
 an MCP client. It never sends your code or test results anywhere — there is
 no telemetry of any kind in this package.

@@ -1,4 +1,4 @@
-# Contributing to mcp-testkit
+# Contributing to mcp-testbench
 
 Thanks for your interest! All contributions are welcome — bug reports,
 feature requests, docs fixes, and code.
@@ -6,8 +6,8 @@ feature requests, docs fixes, and code.
 ## Development setup
 
 ```bash
-git clone https://github.com/kero168/mcp-testkit.git
-cd mcp-testkit
+git clone https://github.com/kero168/mcp-testbench.git
+cd mcp-testbench
 npm ci
 npm run build
 npm test

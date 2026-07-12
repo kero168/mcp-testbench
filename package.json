@@ -1,5 +1,5 @@
 {
-  "name": "mcp-testkit",
+  "name": "mcp-testbench",
   "version": "0.1.0",
   "description": "Test any MCP server, in any language, with one command. A test runner and conformance checker for Model Context Protocol servers.",
   "keywords": [
@@ -17,18 +17,18 @@
   "author": "kero168",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kero168/mcp-testkit.git"
+    "url": "git+https://github.com/kero168/mcp-testbench.git"
   },
-  "homepage": "https://github.com/kero168/mcp-testkit#readme",
+  "homepage": "https://github.com/kero168/mcp-testbench#readme",
   "bugs": {
-    "url": "https://github.com/kero168/mcp-testkit/issues"
+    "url": "https://github.com/kero168/mcp-testbench/issues"
   },
   "type": "module",
   "engines": {
     "node": ">=20"
   },
   "bin": {
-    "mcp-testkit": "dist/cli.js"
+    "mcp-testbench": "dist/cli.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

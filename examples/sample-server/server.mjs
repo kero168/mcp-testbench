@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Minimal MCP server used by mcp-testkit's own test suite and as a living example.
+ * Minimal MCP server used by mcp-testbench's own test suite and as a living example.
  * Implements one well-behaved tool and one intentionally sloppy tool.
  */
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";

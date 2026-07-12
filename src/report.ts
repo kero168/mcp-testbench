@@ -23,7 +23,7 @@ const ICON: Record<CheckResult["status"], string> = {
 
 export function printPretty(summary: RunSummary): void {
   console.log();
-  console.log(pc.bold(`mcp-testkit › ${summary.serverLabel}`));
+  console.log(pc.bold(`mcp-testbench › ${summary.serverLabel}`));
   console.log();
   for (const c of summary.checks) {
     const dur = c.durationMs !== undefined ? pc.dim(` (${c.durationMs}ms)`) : "";
@@ -51,9 +51,9 @@ export function printJson(summary: RunSummary): void {
 export function printGithubAnnotations(summary: RunSummary): void {
   for (const c of summary.checks) {
     if (c.status === "fail") {
-      console.log(`::error title=mcp-testkit ${c.id}::${c.title}${c.detail ? ` — ${c.detail}` : ""}`);
+      console.log(`::error title=mcp-testbench ${c.id}::${c.title}${c.detail ? ` — ${c.detail}` : ""}`);
     } else if (c.status === "warn") {
-      console.log(`::warning title=mcp-testkit ${c.id}::${c.title}${c.detail ? ` — ${c.detail}` : ""}`);
+      console.log(`::warning title=mcp-testbench ${c.id}::${c.title}${c.detail ? ` — ${c.detail}` : ""}`);
     }
   }
 }

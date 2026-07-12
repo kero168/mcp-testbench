@@ -1,13 +1,13 @@
-# mcp-testkit
+# mcp-testbench
 
 > Test any MCP server, in any language, with one command.
 
-[![CI](https://github.com/kero168/mcp-testkit/actions/workflows/ci.yml/badge.svg)](https://github.com/kero168/mcp-testkit/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/mcp-testkit)](https://www.npmjs.com/package/mcp-testkit)
+[![CI](https://github.com/kero168/mcp-testbench/actions/workflows/ci.yml/badge.svg)](https://github.com/kero168/mcp-testbench/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/mcp-testbench)](https://www.npmjs.com/package/mcp-testbench)
 [![license](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
 There are **20,000+ MCP servers** in the wild — and no standard way to test one.
-Unit test frameworks only see your own language. `mcp-testkit` connects to your
+Unit test frameworks only see your own language. `mcp-testbench` connects to your
 server **as a real MCP client** and verifies it over the protocol itself, so it
 works with servers written in TypeScript, Python, Go, Rust, or anything else.
 
@@ -15,12 +15,12 @@ works with servers written in TypeScript, Python, Go, Rust, or anything else.
 
 ```bash
 # Zero-install: point it at any stdio MCP server
-npx mcp-testkit run --server "npx -y @modelcontextprotocol/server-everything"
+npx mcp-testbench run --server "npx -y @modelcontextprotocol/server-everything"
 
 # Or add it to your project
-npm i -D mcp-testkit
-npx mcp-testkit init     # creates mcptest.config.yaml
-npx mcp-testkit run
+npm i -D mcp-testbench
+npx mcp-testbench init     # creates mcptest.config.yaml
+npx mcp-testbench run
 ```
 
 ## What it checks
@@ -67,7 +67,7 @@ Supported expectations: `ok`, `error`, `result.contains`, `result.matches`
 
 ```yaml
 # .github/workflows/mcp.yml
-- run: npx mcp-testkit run --reporter github
+- run: npx mcp-testbench run --reporter github
 ```
 
 The `github` reporter emits GitHub Actions annotations for every failure.
@@ -85,12 +85,12 @@ A `json` reporter is available for any other CI system.
 
 Language-level unit tests can't catch what actually breaks MCP clients:
 malformed tool schemas, missing capability declarations, crashes on invalid
-arguments, or handshake regressions. `mcp-testkit` exercises exactly what a
+arguments, or handshake regressions. `mcp-testbench` exercises exactly what a
 real client (Claude, ChatGPT, Cursor, or any MCP host) will see.
 
 ## Roadmap
 
-- `mcp-testkit audit` — security & quality audit: tool-description linting,
+- `mcp-testbench audit` — security & quality audit: tool-description linting,
   declared-permissions vs. actual-behavior probes
 - Snapshot testing for tool outputs
 - Coverage report (which tools have test cases)

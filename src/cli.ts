@@ -12,7 +12,7 @@ import type { CheckResult, TestkitConfig } from "./types.js";
 const program = new Command();
 
 program
-  .name("mcp-testkit")
+  .name("mcp-testbench")
   .description("Test any MCP server, in any language, with one command.")
   .version("0.1.0");
 
@@ -28,7 +28,7 @@ program
     }
     writeFileSync(target, INIT_TEMPLATE, "utf8");
     console.log(pc.green(`Created ${target}`));
-    console.log(pc.dim(`Edit the server command, then run: npx mcp-testkit run`));
+    console.log(pc.dim(`Edit the server command, then run: npx mcp-testbench run`));
   });
 
 program

@@ -4,7 +4,7 @@ import { promisify } from "node:util";
 
 const run = promisify(execFile);
 
-describe("mcp-testkit CLI (integration)", () => {
+describe("mcp-testbench CLI (integration)", () => {
   it("passes against the well-behaved sample server", async () => {
     const { stdout } = await run("node", [
       "dist/cli.js",
