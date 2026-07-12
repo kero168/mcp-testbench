@@ -1,0 +1,33 @@
+# Example: testing the sample echo server
+server:
+  command: "node examples/sample-server/server.mjs"
+
+conformance:
+  enabled: true
+
+suites:
+  - name: echo behaves
+    tool: echo
+    cases:
+      - name: echoes plain text
+        args: { message: "hello mcp" }
+        expect:
+          ok: true
+          result.contains: "hello mcp"
+      - name: shouts when asked
+        args: { message: "quiet", shout: true }
+        expect:
+          ok: true
+          result.equals: "QUIET"
+      - name: rejects missing message
+        args: {}
+        expect:
+          error: true
+  - name: add computes
+    tool: add
+    cases:
+      - name: adds integers
+        args: { a: 2, b: 40 }
+        expect:
+          ok: true
+          result.equals: "42"
