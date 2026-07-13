@@ -1,0 +1,27 @@
+name: Server compatibility report
+description: mcp-testbench mis-reports a conforming server (or passes a broken one)
+title: "[compat] "
+labels: ["compatibility"]
+body:
+  - type: input
+    id: server
+    attributes:
+      label: Server under test
+      description: Name + link (or language/framework) of the MCP server
+      placeholder: "my-python-server (FastMCP), https://github.com/..."
+    validations:
+      required: true
+  - type: input
+    id: check
+    attributes:
+      label: Check ID affected
+      placeholder: "C012"
+    validations:
+      required: true
+  - type: textarea
+    id: detail
+    attributes:
+      label: Why you believe the result is wrong
+      description: Quote the relevant part of the MCP spec if you can.
+    validations:
+      required: true

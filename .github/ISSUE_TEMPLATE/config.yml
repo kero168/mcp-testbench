@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question / discussion
+    url: https://github.com/kero168/mcp-testbench/discussions
+    about: Ask usage questions or propose ideas in Discussions.
+  - name: Security report (private)
+    url: https://github.com/kero168/mcp-testbench/security/advisories/new
+    about: Report a vulnerability privately. Please do not open a public issue.
