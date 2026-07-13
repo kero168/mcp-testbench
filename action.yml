@@ -1,0 +1,41 @@
+name: "mcp-testbench"
+description: "Test any MCP server, in any language, with one command. Runs protocol-level conformance checks and your declarative YAML test suites."
+author: "kero168"
+branding:
+  icon: "check-circle"
+  color: "blue"
+
+inputs:
+  server:
+    description: "Server command (stdio) to test, e.g. 'node dist/index.js'. Omit if a mcptest.config.yaml exists."
+    required: false
+    default: ""
+  url:
+    description: "Streamable HTTP URL to test, e.g. 'http://localhost:3000/mcp'. Overrides 'server'."
+    required: false
+    default: ""
+  config:
+    description: "Path to mcptest.config.yaml"
+    required: false
+    default: ""
+  version:
+    description: "mcp-testbench version to run"
+    required: false
+    default: "latest"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Run mcp-testbench
+      shell: bash
+      run: |
+        ARGS="run --reporter github"
+        if [ -n "${{ inputs.url }}" ]; then
+          ARGS="$ARGS --url \"${{ inputs.url }}\""
+        elif [ -n "${{ inputs.server }}" ]; then
+          ARGS="$ARGS --server \"${{ inputs.server }}\""
+        fi
+        if [ -n "${{ inputs.config }}" ]; then
+          ARGS="$ARGS --config \"${{ inputs.config }}\""
+        fi
+        eval npx -y mcp-testbench@${{ inputs.version }} $ARGS

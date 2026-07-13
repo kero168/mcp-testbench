@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "mcp-testbench"
+abstract: "Test any MCP (Model Context Protocol) server, in any language, with one command. A protocol-level test runner and conformance checker."
+type: software
+authors:
+  - alias: kero168
+repository-code: "https://github.com/kero168/mcp-testbench"
+url: "https://github.com/kero168/mcp-testbench"
+license: MIT
+version: 0.1.0
+date-released: 2026-07-12
+keywords:
+  - mcp
+  - model-context-protocol
+  - testing
+  - conformance
+  - developer-tools
