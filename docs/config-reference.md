@@ -11,6 +11,9 @@ server:            # how to reach the server under test
   url: "..."       # OR Streamable HTTP endpoint
 
 suites: []         # your test cases (optional — conformance checks always run)
+
+audit:             # used by `mcp-testbench audit` (optional)
+  skip: []         # audit rule ids to skip, e.g. ["A003"]
 ```
 
 ## `server`
@@ -46,7 +49,17 @@ suites: []         # your test cases (optional — conformance checks always run
 | `result.equals: "str"` | Text content equals the string exactly |
 | `maxDurationMs: 2000` | Call completes within the given milliseconds |
 
+## `audit`
+
+Used by the `audit` subcommand — see [audit.md](./audit.md).
+
+| Key | Type | Description |
+|---|---|---|
+| `skip` | string[] | Audit rule ids to skip, e.g. `["A003"]` |
+
 ## CLI flags
+
+Shared by `run` and `audit`:
 
 | Flag | Description |
 |---|---|
@@ -54,10 +67,12 @@ suites: []         # your test cases (optional — conformance checks always run
 | `--url "<url>"` | Streamable HTTP endpoint (overrides config) |
 | `--config <path>` | alternate config file |
 | `--reporter pretty\|github\|json` | output format (default `pretty`) |
+| `--timeout <ms>` | per-call timeout (default 15000) |
+| `--strict` | `audit` only: exit 1 when any audit check warns |
 
 ## Exit codes
 
 | Code | Meaning |
 |---|---|
-| 0 | all checks and suites passed |
-| 1 | at least one failure |
+| 0 | all checks and suites passed (warnings do not fail the run) |
+| 1 | at least one failure, or a warning under `audit --strict` |

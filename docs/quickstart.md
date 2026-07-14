@@ -80,6 +80,16 @@ jobs:
 Done. Every push now verifies your server exactly the way a real MCP client
 (Claude, ChatGPT, Cursor, …) will see it.
 
+## 5. Audit it (optional)
+
+```bash
+npx mcp-testbench audit --server "node dist/index.js"
+```
+
+Four local security checks (A001–A010) lint your tool descriptions and schemas
+for prompt-injection surface, dangerous tools without confirmation notes, and
+over-broad string arguments. No LLM, no network. See [audit.md](./audit.md).
+
 ## Troubleshooting
 
 - **C000 fails / hangs**: your server may be writing logs to stdout. MCP stdio
