@@ -63,6 +63,27 @@ suites:
 Supported expectations: `ok`, `error`, `result.contains`, `result.matches`
 (regex), `result.equals`, `maxDurationMs`.
 
+## Security & quality audit
+
+`mcp-testbench audit` inspects any server's declared tools for security and
+quality smells — entirely locally: no LLM, no network beyond your server.
+
+```bash
+npx mcp-testbench audit --server "node dist/index.js"
+npx mcp-testbench audit --url "http://localhost:3000/mcp" --reporter json
+```
+
+| ID | Audit check | Severity |
+|----|-------------|----------|
+| A001 | Tool descriptions are substantive and free of injection-style wording ("ignore previous instructions", tool shadowing, "don't tell the user") | warn |
+| A002 | Destructive / exec-capable tools (delete, exec, shell, ...) document confirmation or safety notes | warn |
+| A003 | No unconstrained string arguments accepting arbitrary commands, paths, or URLs | info |
+| A010 | No invisible or control Unicode characters hidden in tool/schema descriptions | error |
+
+Findings are reported as warnings (exit code 0) so you can adopt the audit
+incrementally; pass `--strict` to make any warning fail the run. Details and
+rule rationale: [docs/audit.md](./docs/audit.md).
+
 ## Use it in CI
 
 ```yaml
@@ -90,11 +111,12 @@ real client (Claude, ChatGPT, Cursor, or any MCP host) will see.
 
 ## Roadmap
 
-- `mcp-testbench audit` — security & quality audit: tool-description linting,
-  declared-permissions vs. actual-behavior probes
+`mcp-testbench audit` shipped in v0.3.0. Next up (see [ROADMAP.md](./ROADMAP.md)):
+
+- Declared-permissions vs. actual-behavior probes (e.g. a "read-only" tool
+  that mutates state)
 - Snapshot testing for tool outputs
 - Coverage report (which tools have test cases)
-- GitHub Action wrapper
 - LLM-assisted semantic checks (opt-in, bring your own key)
 
 ## Contributing

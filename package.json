@@ -1,6 +1,6 @@
 {
   "name": "mcp-testbench",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Test any MCP server, in any language, with one command. A test runner and conformance checker for Model Context Protocol servers.",
   "keywords": [
     "mcp",

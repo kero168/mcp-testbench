@@ -3,20 +3,19 @@
 This is the public roadmap for `mcp-testbench`. It is re-evaluated after every
 minor release based on user feedback. Items are ordered by priority.
 
-## Now (v0.2)
+## Now (v0.3)
 
-- **GitHub Action wrapper** (`action.yml` in this repo) —
-  `uses: kero168/mcp-testbench@v0.2` runs conformance checks + your suites in
-  CI with zero setup.
-- **`--timeout` and `--filter` CLI flags** — control per-check timeout and run
-  a subset of checks/suites. Good first issues.
+- **`mcp-testbench audit`** — shipped in v0.3.0: local security & quality
+  audit (rules A001–A010): tool-description linting, dangerous-tool detection,
+  over-permissive schema signals, hidden-Unicode prompt-injection surface.
+  All analysis is local; no LLM required. See [docs/audit.md](./docs/audit.md).
+- **`--filter` CLI flag** — run a subset of checks/suites. Good first issue.
 - **JUnit XML reporter** — GitLab CI / Jenkins / CircleCI compatibility.
 
-## Next (v0.3)
+## Next (v0.4)
 
-- **`mcp-testbench audit`** — security & quality audit: tool-description
-  linting, dangerous-name detection, declared-permissions vs. actual-behavior
-  probes (e.g., a "read-only" tool that mutates state).
+- **Declared-permissions vs. actual-behavior probes** — extends `audit` with
+  opt-in dynamic probes (e.g., a "read-only" tool that mutates state).
 - **Snapshot testing** for tool outputs (`expect: snapshot`).
 - **Coverage report** — which declared tools have test cases.
 

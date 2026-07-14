@@ -64,6 +64,27 @@ suites:
 
 対応している期待値: `ok`, `error`, `result.contains`, `result.matches`（正規表現）, `result.equals`, `maxDurationMs`
 
+## セキュリティ・品質監査（`audit`）
+
+`mcp-testbench audit` は、サーバーが宣言するツールをセキュリティ・品質の観点で
+検査します。解析はすべてローカルで完結し、LLMも外部ネットワークも不要です。
+
+```bash
+npx mcp-testbench audit --server "node dist/index.js"
+npx mcp-testbench audit --url "http://localhost:3000/mcp" --reporter json
+```
+
+| ID   | 監査内容 | severity |
+| ---- | -------- | -------- |
+| A001 | ツール説明が十分な長さで、注入系文言（「ignore previous instructions」等）を含まない | warn |
+| A002 | 破壊的・実行系ツール（delete/exec/shell系）の説明に確認（confirmation）や安全性の記述がある | warn |
+| A003 | 任意のコマンド・パス・URLを受け取る無制約のstring引数がない | info |
+| A010 | ツール/スキーマ説明に不可視・制御Unicode文字が隠されていない | error |
+
+検出結果は警告（終了コード0）として報告されるため、段階的に導入できます。
+`--strict` を付けると警告があった時点で終了コード1になります。
+詳細は [docs/audit.md](./docs/audit.md) を参照してください。
+
 ## CIで使う
 
 ```yaml
