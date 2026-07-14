@@ -20,7 +20,7 @@ export function splitCommand(command: string): { cmd: string; args: string[] } {
 
 export async function connect(server: ServerConfig, timeoutMs = 15000): Promise<Connection> {
   const client = new Client(
-    { name: "mcp-testbench", version: "0.1.0" },
+    { name: "mcp-testbench", version: "0.3.0" },
     { capabilities: {} },
   );
 

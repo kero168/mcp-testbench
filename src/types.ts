@@ -3,6 +3,8 @@ export interface TestkitConfig {
   server: ServerConfig;
   /** Built-in conformance checks. Default: all enabled. */
   conformance?: ConformanceConfig;
+  /** Security & quality audit checks (`mcp-testbench audit`). */
+  audit?: AuditConfig;
   suites?: SuiteConfig[];
   /** Global timeout for a single tool call, ms. Default 15000. */
   timeoutMs?: number;
@@ -23,6 +25,11 @@ export interface ServerConfig {
 export interface ConformanceConfig {
   enabled?: boolean;
   /** Skip specific rule ids */
+  skip?: string[];
+}
+
+export interface AuditConfig {
+  /** Skip specific audit rule ids (e.g. ["A003"]) */
   skip?: string[];
 }
 
@@ -57,10 +64,15 @@ export interface ExpectConfig {
 /** Results */
 export type CheckStatus = "pass" | "fail" | "skip" | "warn";
 
+/** Impact classification for audit findings (audit checks are warn-centric). */
+export type CheckSeverity = "info" | "warn" | "error";
+
 export interface CheckResult {
   id: string;
   title: string;
   status: CheckStatus;
+  /** Severity of the finding (set by audit checks; reporters render it). */
+  severity?: CheckSeverity;
   detail?: string;
   durationMs?: number;
 }
